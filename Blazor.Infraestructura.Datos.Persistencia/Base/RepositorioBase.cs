@@ -6,7 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Capacitacion.Infraestructura.Datos.Persistencia.Core.Base
+namespace Blazor.Infraestructura.Datos.Persistencia.Base
 {
     public abstract class RepositorioBase<TGeneric> : IRepositorioBase<TGeneric> where TGeneric : EntidadBase
     {

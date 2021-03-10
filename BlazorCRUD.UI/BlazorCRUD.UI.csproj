@@ -8,4 +8,9 @@
     <Folder Include="Data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Blazor.Aplicacion.Core\Blazor.Aplicacion.Core.csproj" />
+    <ProjectReference Include="..\Blazor.Infraestructura.Datos.Persistencia\Blazor.Infraestructura.Datos.Persistencia.csproj" />
+  </ItemGroup>
+
 </Project>

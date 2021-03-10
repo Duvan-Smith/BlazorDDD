@@ -1,8 +1,13 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BlazorCRUD.UI
 {
@@ -13,20 +18,11 @@ namespace BlazorCRUD.UI
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateHostBuilder(string[] args)
-        {
-            IWebHostEnvironment? hostEnvironment = null;
-
-            return WebHost.CreateDefaultBuilder(args)
-                .UseContentRoot(AppContext.BaseDirectory)
-                .ConfigureServices(services =>
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    hostEnvironment = services
-                    .Where(x => x.ServiceType == typeof(IWebHostEnvironment))
-                    .Select(x => (IWebHostEnvironment)x.ImplementationInstance)
-                    .First();
-                })
-                .UseStartup<Startup>();
-        }
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }

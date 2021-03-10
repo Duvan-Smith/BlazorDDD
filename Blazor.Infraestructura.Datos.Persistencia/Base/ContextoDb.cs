@@ -1,11 +1,10 @@
 ﻿using Blazor.Dominio.Base;
 using Blazor.Dominio.Films;
-using Blazor.Infraestructura.Datos.Persistencia.Base;
-using Capacitacion.Infraestructura.Datos.Persistencia.Core.Base.Configuration;
+using Blazor.Infraestructura.Datos.Persistencia.Base.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
-namespace Capacitacion.Infraestructura.Datos.Persistencia.Core.Base
+namespace Blazor.Infraestructura.Datos.Persistencia.Base
 {
     public class ContextoDb : DbContext, IContextDb
     {

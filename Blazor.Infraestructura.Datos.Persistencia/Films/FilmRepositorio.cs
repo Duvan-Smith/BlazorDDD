@@ -1,6 +1,5 @@
 ﻿using Blazor.Dominio.Films;
 using Blazor.Infraestructura.Datos.Persistencia.Base;
-using Capacitacion.Infraestructura.Datos.Persistencia.Core.Base;
 
 namespace Blazor.Infraestructura.Datos.Persistencia.Films
 {

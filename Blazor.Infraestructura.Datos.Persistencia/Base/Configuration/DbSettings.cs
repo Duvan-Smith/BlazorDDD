@@ -1,4 +1,4 @@
-﻿namespace Capacitacion.Infraestructura.Datos.Persistencia.Core.Base.Configuration
+﻿namespace Blazor.Infraestructura.Datos.Persistencia.Base.Configuration
 {
     public class DbSettings
     {

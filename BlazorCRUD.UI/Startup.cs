@@ -1,3 +1,5 @@
+using Blazor.Aplicacion.Core.Base.Configuration;
+using Blazor.Infraestructura.Datos.Persistencia.Base.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +25,7 @@ namespace BlazorCRUD.UI
             services.AddServerSideBlazor();
             services.AddControllers();
             var dbSettings = Configuration.GetSection("DbConnectionString").Get<string>();
+            services.ConfigureFilmService(new DbSettings { ConnectionString = dbSettings });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

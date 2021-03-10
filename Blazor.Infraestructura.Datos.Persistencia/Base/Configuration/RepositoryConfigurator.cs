@@ -1,7 +1,5 @@
 ﻿using Blazor.Dominio.Films;
 using Blazor.Infraestructura.Datos.Persistencia.Films;
-using Capacitacion.Infraestructura.Datos.Persistencia.Core.Base;
-using Capacitacion.Infraestructura.Datos.Persistencia.Core.Base.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
