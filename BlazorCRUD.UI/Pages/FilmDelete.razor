@@ -1,14 +1,12 @@
-﻿@page "/filmdetails"
-@page "/filmdetails/{Id}"
+﻿@page "/filmdelet/{id}"
 @using System;
 @using Blazor.Aplicacion.Dto.FilmDto
 @using Blazor.Aplicacion.Core.FilmServices
 @inject IFilmService FilmService
 @inject NavigationManager NavigationManager
-<h1>FilmDetails</h1>
+<h1>FilmDelete</h1>
 
-Film Details
-
+<p style="color:darkred;text-align:center"> Are you sure </p>
 <EditForm Model="@filmrequest">
     <table class="table">
         <tr>
@@ -25,43 +23,29 @@ Film Details
         </tr>
         <tr>
             <td colspan="2" style="text-align:center">
-                <input type="submit" value="Save" @onclick="SaveFilm" />
+                <input type="submit" value="Delete" @onclick="DeleteFilm" />
                 <input type="button" value="Cancel" @onclick="CancelFilm" />
             </td>
         </tr>
     </table>
 </EditForm>
-
-@code{
+@code {
     [Parameter]
     public string Id { get; set; }
 
     FilmRequestDto filmrequest = new FilmRequestDto();
-    protected void SaveFilm()
-    {
-        if (string.IsNullOrEmpty(Id))
-        {
-            FilmService.Agregar(filmrequest);
-        }
-        else
-        {
-            FilmService.ActualizarFilm(filmrequest);
-        }
-        NavigationManager.NavigateTo("/filmlist");
-    }
+
     protected void CancelFilm()
     {
         NavigationManager.NavigateTo("/filmlist");
     }
+    protected void DeleteFilm()
+    {
+        FilmService.Eliminar(filmrequest);
+        NavigationManager.NavigateTo("/filmlist");
+    }
     protected override async Task OnInitializedAsync()
     {
-        if (string.IsNullOrEmpty(Id))
-        {
-            filmrequest.ReleaseDate = DateTimeOffset.Now;
-        }
-        else
-        {
-            filmrequest = FilmService.GetFilmByFilm(Guid.Parse(Id));
-        }
+        filmrequest = FilmService.GetFilmByFilm(Guid.Parse(Id));
     }
 }

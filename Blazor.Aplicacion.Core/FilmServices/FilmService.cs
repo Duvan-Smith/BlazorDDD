@@ -3,6 +3,7 @@ using Blazor.Aplicacion.Core.FilmServices.Excepciones;
 using Blazor.Aplicacion.Dto.FilmDto;
 using Blazor.Dominio.Films;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -40,12 +41,12 @@ namespace Blazor.Aplicacion.Core.FilmServices
                 throw new UsernameNotDefinedException();
         }
 
-        public FilmResponseDto GetUserByFilm(FilmRequestDto request)
+        public FilmRequestDto GetFilmByFilm(Guid request)
         {
             var user = _repoFilm
-                .SearchMatching<FilmEntity>(x => x.Id == request.Id);
+                .SearchMatching<FilmEntity>(x => x.Id == request);
 
-            return _mapper.Map<FilmResponseDto>(user.FirstOrDefault());
+            return _mapper.Map<FilmRequestDto>(user.FirstOrDefault());
         }
 
         public bool ActualizarFilm(FilmRequestDto film)
@@ -60,6 +61,14 @@ namespace Blazor.Aplicacion.Core.FilmServices
         {
             var entity = _mapper.Map<FilmEntity>(request);
             return _repoFilm.Delete(entity);
+        }
+
+        public IEnumerable<FilmRequestDto> GetAllFilm()
+        {
+            var user = _repoFilm
+                .GetAll<FilmEntity>();
+
+            return _mapper.Map<IEnumerable<FilmRequestDto>>(user);
         }
     }
 }

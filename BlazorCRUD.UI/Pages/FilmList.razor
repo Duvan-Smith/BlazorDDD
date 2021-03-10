@@ -1,0 +1,57 @@
+﻿@page "/filmlist"
+@using Blazor.Aplicacion.Dto.FilmDto
+@using Blazor.Aplicacion.Core.FilmServices
+@inject IFilmService FilmService
+
+<h3>FilmList</h3>
+
+<p>This page shows a list of all films</p>
+
+@if (filmsrequest == null)
+{
+
+
+    <p> <em> Loading... </em> </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Title</td>
+                <td>Director</td>
+                <td>Fecha</td>
+                <td>  </td>
+                <td>  </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var film in filmsrequest)
+            {
+            <tr>
+                <td>@film.Title</td>
+                <td>@film.Director</td>
+                <td>@film.ReleaseDate</td>
+                <td> <a href="/filmdetails/@film.Id"> <i> Edit </i> </a> </td>
+                <td> <a href="/filmdelet/@film.Id"> <i> Delete </i> </a> </td>
+            </tr>
+            }
+        </tbody>
+
+    </table>
+}
+
+@code {
+    private IEnumerable<FilmRequestDto> filmsrequest;
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            filmsrequest = FilmService.GetAllFilm();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+}
