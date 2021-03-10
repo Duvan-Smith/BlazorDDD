@@ -9,6 +9,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Syncfusion.Blazor" Version="18.4.0.47" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Blazor.Aplicacion.Core\Blazor.Aplicacion.Core.csproj" />
     <ProjectReference Include="..\Blazor.Aplicacion.Dto\Blazor.Aplicacion.Dto.csproj" />
     <ProjectReference Include="..\Blazor.Infraestructura.Datos.Persistencia\Blazor.Infraestructura.Datos.Persistencia.csproj" />

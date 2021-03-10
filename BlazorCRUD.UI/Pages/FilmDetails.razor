@@ -5,6 +5,8 @@
 @using Blazor.Aplicacion.Core.FilmServices
 @inject IFilmService FilmService
 @inject NavigationManager NavigationManager
+@using Syncfusion.Blazor.Inputs;
+@using Syncfusion.Blazor.Buttons;
 <h1>FilmDetails</h1>
 
 Film Details
@@ -13,7 +15,10 @@ Film Details
     <table class="table">
         <tr>
             <td>Title:</td>
-            <td> <input type="text" @bind="filmrequest.Title" /> </td>
+            <td>
+                <input type="text" @bind="filmrequest.Title" />
+                @*<SfTextBox Placeholder="Nombre de la pelicula" @bind-Value="filmrequest.Title" FloatLabelType="@FloatLabelType.Auto"></SfTextBox>*@
+            </td>
         </tr>
         <tr>
             <td>Director:</td>
@@ -27,6 +32,7 @@ Film Details
             <td colspan="2" style="text-align:center">
                 <input type="submit" value="Save" @onclick="SaveFilm" />
                 <input type="button" value="Cancel" @onclick="CancelFilm" />
+                @*<SfButton @onclick="CancelFilm">Cancel</SfButton>*@
             </td>
         </tr>
     </table>
