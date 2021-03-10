@@ -52,7 +52,9 @@ namespace Blazor.Aplicacion.Core.FilmServices
         public bool ActualizarFilm(FilmRequestDto film)
         {
             var entity = _repoFilm.SearchMatchingOneResult<FilmEntity>(x => x.Id == film.Id);
+            entity.Title = film.Title;
             entity.Director = film.Director;
+            entity.ReleaseDate = film.ReleaseDate;
 
             return _repoFilm.Update(entity);
         }
