@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Blazor.Dominio.Base;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Blazor.Dominio.Users
 {
-    public class UserEntity : UserBase
+    public class UserEntity : EntidadBase
     {
         [Key]
         public Guid UsuarioId { get; set; }
@@ -21,7 +22,7 @@ namespace Blazor.Dominio.Users
         public DateTimeOffset FechaRegistro { get; set; }
 
         [Required]
-        [RegularExpression(@"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$")]
+        //[RegularExpression(@"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$")]
         public string Correo { get; set; }
 
         [Required]

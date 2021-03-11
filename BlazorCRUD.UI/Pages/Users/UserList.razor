@@ -1,8 +1,10 @@
-﻿@page "/filmlist"
-@using Blazor.Aplicacion.Dto.FilmsDto
+﻿@page "/userlist"
+@using Blazor.Aplicacion.Dto.UsersDto.Registro
+@using Blazor.Aplicacion.Core.Users.Registro
+@inject IUserService UserService
 
 <h3>UserList</h3>
-@if (filmsrequest == null)
+@if (userrequest == null)
 {
 
 
@@ -21,14 +23,15 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var film in filmsrequest)
+            @foreach (var user in userrequest)
             {
                 <tr>
-                    <td>@film.Title</td>
-                    <td>@film.Director</td>
-                    <td>@film.ReleaseDate</td>
-                    <td> <a href="/filmdetails/@film.Id"> <i> Edit </i> </a> </td>
-                    <td> <a href="/filmdelet/@film.Id"> <i> Delete </i> </a> </td>
+                    <td>@user.Nombre</td>
+                    <td>@user.Apellido</td>
+                    <td>@user.Correo</td>
+                    <td>@user.Rol</td>
+                    <td> <a href="/filmdetails/@user.UsuarioId"> <i> Edit </i> </a> </td>
+                    <td> <a href="/filmdelet/@user.UsuarioId"> <i> Delete </i> </a> </td>
                 </tr>
             }
         </tbody>
@@ -37,7 +40,7 @@ else
 }
 
 @code {
-    private IEnumerable<FilmRequestDto> filmsrequest;
+    private IEnumerable<UserRequestDto> userrequest;
     protected override async Task OnInitializedAsync()
     {
         try

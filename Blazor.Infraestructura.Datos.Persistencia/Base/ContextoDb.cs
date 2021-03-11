@@ -1,5 +1,6 @@
 ﻿using Blazor.Dominio.Base;
 using Blazor.Dominio.Films;
+using Blazor.Dominio.Users;
 using Blazor.Infraestructura.Datos.Persistencia.Base.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Blazor.Infraestructura.Datos.Persistencia.Base
         #region Tablas db
 
         public virtual DbSet<FilmEntity> Film { get; set; }
+        public virtual DbSet<UserEntity> User { get; set; }
 
         #endregion Tablas db
 

@@ -2,7 +2,7 @@
 
 namespace Blazor.Dominio.Users
 {
-    public interface IUserRepositorio : IRepositorioBase<UserBase>
+    public interface IUserRepositorio : IRepositorioBase<EntidadBase>
     {
     }
 }
