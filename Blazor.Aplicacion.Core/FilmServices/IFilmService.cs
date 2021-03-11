@@ -1,4 +1,4 @@
-﻿using Blazor.Aplicacion.Dto.FilmDto;
+﻿using Blazor.Aplicacion.Dto.FilmsDto;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

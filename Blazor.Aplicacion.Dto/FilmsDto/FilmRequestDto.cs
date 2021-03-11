@@ -1,7 +1,7 @@
 ﻿using Blazor.Aplicacion.Dto.Base;
 using System;
 
-namespace Blazor.Aplicacion.Dto.FilmDto
+namespace Blazor.Aplicacion.Dto.FilmsDto
 {
     public class FilmRequestDto : DataTransferObject
     {

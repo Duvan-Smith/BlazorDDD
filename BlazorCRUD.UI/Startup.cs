@@ -1,4 +1,4 @@
-using Blazor.Aplicacion.Core.Base.Configuration;
+using Blazor.Aplicacion.Core.FilmServices.Configuration;
 using Blazor.Infraestructura.Datos.Persistencia.Base.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

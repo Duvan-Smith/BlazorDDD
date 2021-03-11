@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Blazor.Aplicacion.Core.FilmServices.Excepciones;
-using Blazor.Aplicacion.Dto.FilmDto;
+using Blazor.Aplicacion.Dto.FilmsDto;
 using Blazor.Dominio.Films;
 using System;
 using System.Collections.Generic;

@@ -1,11 +1,9 @@
-﻿
-using Blazor.Aplicacion.Core.FilmServices;
-using Blazor.Aplicacion.Core.Mapper.Configuration;
+﻿using Blazor.Aplicacion.Core.Mapper.Configuration;
 using Blazor.Infraestructura.Datos.Persistencia.Base.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Blazor.Aplicacion.Core.Base.Configuration
+namespace Blazor.Aplicacion.Core.FilmServices.Configuration
 {
     public static class FilmConfigurator
     {

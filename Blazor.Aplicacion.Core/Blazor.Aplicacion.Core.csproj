@@ -15,4 +15,13 @@
     <ProjectReference Include="..\Blazor.Infraestructura.Datos.Persistencia\Blazor.Infraestructura.Datos.Persistencia.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Users\Base\Configuration\" />
+    <Folder Include="Users\InicioSesion\Mapper\" />
+    <Folder Include="Users\Base\Excepciones\" />
+    <Folder Include="Users\Fachada\" />
+    <Folder Include="Users\InicioSesion\" />
+    <Folder Include="Users\Registro\Mapper\" />
+  </ItemGroup>
+
 </Project>
