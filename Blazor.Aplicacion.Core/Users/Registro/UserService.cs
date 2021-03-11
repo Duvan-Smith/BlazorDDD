@@ -1,30 +1,29 @@
-﻿using Blazor.Aplicacion.Core.FilmServices;
-using Blazor.Aplicacion.Dto.FilmsDto;
+﻿using Blazor.Aplicacion.Dto.UsersDto.Registro;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Blazor.Aplicacion.Core.Users.Registro
 {
-    public class UserService : IFilmService
+    public class UserService : IUserService
     {
-        public bool ActualizarFilm(FilmRequestDto request)
+        public bool ActualizarUser(UserRequestDto request)
         {
             throw new NotImplementedException();
         }
-        public Task<Guid?> Agregar(FilmRequestDto request)
+        public Task<Guid?> AgregarUser(UserRequestDto request)
         {
             throw new NotImplementedException();
         }
-        public bool Eliminar(FilmRequestDto request)
+        public bool EliminarUser(UserRequestDto request)
         {
             throw new NotImplementedException();
         }
-        public IEnumerable<FilmRequestDto> GetAllFilm()
+        public IEnumerable<UserRequestDto> GetAllUser()
         {
             throw new NotImplementedException();
         }
-        public FilmRequestDto GetFilmByFilm(Guid request)
+        public UserRequestDto GetUser(Guid request)
         {
             throw new NotImplementedException();
         }

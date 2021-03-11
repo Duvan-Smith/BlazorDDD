@@ -1,0 +1,51 @@
+﻿@page "/filmlist"
+@using Blazor.Aplicacion.Dto.FilmsDto
+
+<h3>UserList</h3>
+@if (filmsrequest == null)
+{
+
+
+    <p> <em> Loading... </em> </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Title</td>
+                <td>Director</td>
+                <td>Fecha</td>
+                <td>  </td>
+                <td>  </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var film in filmsrequest)
+            {
+                <tr>
+                    <td>@film.Title</td>
+                    <td>@film.Director</td>
+                    <td>@film.ReleaseDate</td>
+                    <td> <a href="/filmdetails/@film.Id"> <i> Edit </i> </a> </td>
+                    <td> <a href="/filmdelet/@film.Id"> <i> Delete </i> </a> </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+}
+
+@code {
+    private IEnumerable<FilmRequestDto> filmsrequest;
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+}

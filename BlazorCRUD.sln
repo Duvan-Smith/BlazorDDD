@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Infraestructura.Tran
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorCRUD.UI", "BlazorCRUD.UI\BlazorCRUD.UI.csproj", "{0CD1C274-018C-4FFB-81C2-8A2126C8D85C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.Test", "Blazor.Test\Blazor.Test.csproj", "{B1BFF354-C794-4D79-8B70-2BF02BE42A8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Test", "Blazor.Test\Blazor.Test.csproj", "{B1BFF354-C794-4D79-8B70-2BF02BE42A8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
