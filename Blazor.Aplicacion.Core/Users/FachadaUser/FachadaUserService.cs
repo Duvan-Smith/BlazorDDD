@@ -2,8 +2,8 @@
 using Blazor.Aplicacion.Core.Users.Registro;
 using Blazor.Aplicacion.Dto.UsersDto.InicioSesion;
 using Blazor.Aplicacion.Dto.UsersDto.Registro;
-using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Blazor.Aplicacion.Core.Users.FachadaUser
@@ -21,39 +21,45 @@ namespace Blazor.Aplicacion.Core.Users.FachadaUser
 
         public async Task<UserResponseDto> UserManagementInsert(UserRequestDto requestDto)
         {
+            var result = await _userService.InsertUser(requestDto) != default ? true : false;
             return new UserResponseDto
             {
-                Aceptado = await _userService.InsertUser(requestDto) != default ? true : false,
+                Aceptado = result,
+                StatusCode = result ? HttpStatusCode.OK : HttpStatusCode.Unauthorized,
+                StatusDescription = result ? "Insert" : "No insert"
             };
         }
         public Task<UserResponseDto> UserManagementDelete(UserRequestDto requestDto)
         {
+            var result = _userService.DeleteUser(requestDto);
             return Task.FromResult(new UserResponseDto
             {
-                Aceptado = _userService.DeleteUser(requestDto),
+                Aceptado = result,
+                StatusCode = result ? HttpStatusCode.OK : HttpStatusCode.Unauthorized,
+                StatusDescription = result ? "Delete" : "No delete"
             });
         }
-
         public Task<UserResponseDto> UserManagementUpdate(UserRequestDto requestDto)
         {
+            var result = _userService.UpdateUser(requestDto);
             return Task.FromResult(new UserResponseDto
             {
-                Aceptado = _userService.UpdateUser(requestDto),
+                Aceptado = result,
+                StatusCode = result ? HttpStatusCode.OK : HttpStatusCode.Unauthorized,
+                StatusDescription = result ? "Updtae" : "No update"
             });
         }
-
         public Task<UserRequestDto> UserManagementGet(UserRequestDto requestDto)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(_userService.GetUser(requestDto));
         }
-
-        public Task<IEnumerable<UserRequestDto>> UserManagementGetAll(UserRequestDto requestDto)
+        public Task<IEnumerable<UserRequestDto>> UserManagementGetAll()
         {
-            throw new NotImplementedException();
+            return Task.FromResult(_userService.GetAllUser());
         }
         public Task<InicioSesionResponseDto> UserLogin(InicioSesionRequestDto requestDto)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(_inicioSesionService.Autenticar(requestDto));
         }
     }
 }

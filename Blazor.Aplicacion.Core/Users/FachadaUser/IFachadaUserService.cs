@@ -11,7 +11,7 @@ namespace Blazor.Aplicacion.Core.Users.FachadaUser
         public Task<UserResponseDto> UserManagementInsert(UserRequestDto requestDto);
         public Task<UserResponseDto> UserManagementDelete(UserRequestDto requestDto);
         public Task<UserResponseDto> UserManagementUpdate(UserRequestDto requestDto);
-        public Task<IEnumerable<UserRequestDto>> UserManagementGetAll(UserRequestDto requestDto);
+        public Task<IEnumerable<UserRequestDto>> UserManagementGetAll();
         public Task<InicioSesionResponseDto> UserLogin(InicioSesionRequestDto requestDto);
 
     }

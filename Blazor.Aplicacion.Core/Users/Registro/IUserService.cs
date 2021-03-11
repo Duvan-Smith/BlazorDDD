@@ -9,7 +9,7 @@ namespace Blazor.Aplicacion.Core.Users.Registro
     {
         public Task<Guid?> InsertUser(UserRequestDto request);
         public bool DeleteUser(UserRequestDto request);
-        public UserRequestDto GetUser(Guid request);
+        public UserRequestDto GetUser(UserRequestDto request);
         public IEnumerable<UserRequestDto> GetAllUser();
         public bool UpdateUser(UserRequestDto request);
     }
