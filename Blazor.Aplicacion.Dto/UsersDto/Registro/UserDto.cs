@@ -24,5 +24,8 @@ namespace Blazor.Aplicacion.Dto.UsersDto.Registro
         [Required]
         [RegularExpression(@"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$")]
         public string Correo { get; set; }
+
+        [Required]
+        public int Rol { get; set; }
     }
 }
