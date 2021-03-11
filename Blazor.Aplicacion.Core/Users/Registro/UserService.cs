@@ -7,15 +7,15 @@ namespace Blazor.Aplicacion.Core.Users.Registro
 {
     public class UserService : IUserService
     {
-        public bool ActualizarUser(UserRequestDto request)
+        public bool UpdateUser(UserRequestDto request)
         {
             throw new NotImplementedException();
         }
-        public Task<Guid?> AgregarUser(UserRequestDto request)
+        public Task<Guid?> InsertUser(UserRequestDto request)
         {
             throw new NotImplementedException();
         }
-        public bool EliminarUser(UserRequestDto request)
+        public bool DeleteUser(UserRequestDto request)
         {
             throw new NotImplementedException();
         }
