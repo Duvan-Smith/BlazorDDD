@@ -17,7 +17,7 @@ namespace Blazor.Infraestructura.Datos.Persistencia.Base
 
         public async Task<T> Insert<T>(T entidad) where T : EntidadBase
         {
-            var response = await _unitOfWork.Set<T>().AddAsync(entidad);
+            var response = await _unitOfWork.Set<T>().AddAsync(entidad).ConfigureAwait(false);
             _unitOfWork.Commit();
             return response.Entity;
         }
@@ -31,7 +31,7 @@ namespace Blazor.Infraestructura.Datos.Persistencia.Base
                 _unitOfWork.Commit();
                 return true;
             }
-            catch (Exception exce)
+            catch
             {
                 return false;
             }

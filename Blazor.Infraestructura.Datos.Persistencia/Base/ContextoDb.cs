@@ -53,7 +53,7 @@ namespace Blazor.Infraestructura.Datos.Persistencia.Base
         public void SetDeatached<T>(T item) where T : EntidadBase => Entry(item).State = EntityState.Detached;
         public void SetModified<T>(T item) where T : EntidadBase => Entry(item).State = EntityState.Modified;
 
-        public void Attach<T>(T item) where T : EntidadBase
+        public void SetAttach<T>(T item) where T : EntidadBase
         {
             if (Entry(item).State == EntityState.Detached)
                 base.Set<T>().Attach(item);
