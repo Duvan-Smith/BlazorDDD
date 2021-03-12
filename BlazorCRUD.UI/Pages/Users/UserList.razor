@@ -1,7 +1,7 @@
 ﻿@page "/userlist"
 @using Blazor.Aplicacion.Dto.UsersDto.Registro
-@using Blazor.Aplicacion.Core.Users.Registro
-@inject IUserService UserService
+@using Blazor.Aplicacion.Core.Users.FachadaUser
+@inject IFachadaUserService FachadaUserService
 
 <h3>UserList</h3>
 @if (userrequest == null)
@@ -17,6 +17,7 @@ else
             <tr>
                 <td>Title</td>
                 <td>Director</td>
+                <td>Fecha</td>
                 <td>Fecha</td>
                 <td>  </td>
                 <td>  </td>
@@ -45,6 +46,7 @@ else
     {
         try
         {
+            userrequest = await FachadaUserService.UserManagementGetAll();
         }
         catch (Exception)
         {
