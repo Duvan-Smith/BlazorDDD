@@ -21,7 +21,7 @@ namespace Blazor.Aplicacion.Core.Users.FachadaUser
 
         public async Task<UserResponseDto> UserManagementInsert(UserRequestDto requestDto)
         {
-            var result = await _userService.InsertUser(requestDto) != default ? true : false;
+            var result = await _userService.InsertUser(requestDto).ConfigureAwait(false) != default;
             return new UserResponseDto
             {
                 Aceptado = result,
