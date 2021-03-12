@@ -31,11 +31,22 @@ namespace Blazor.Test.Aplicacion.Core.Users.Registro
                 UsuarioId = Guid.NewGuid(),
                 Nombre = string.Empty,
             }))).ConfigureAwait(false);
+            await Assert.ThrowsAsync<NombreNullException>(() => Task.FromResult(userService.UpdateUser(new UserRequestDto
+            {
+                UsuarioId = Guid.NewGuid(),
+                Nombre = null,
+            }))).ConfigureAwait(false);
             await Assert.ThrowsAsync<ApellidoNullException>(() => Task.FromResult(userService.UpdateUser(new UserRequestDto
             {
                 UsuarioId = Guid.NewGuid(),
                 Nombre = "fake",
                 Apellido = string.Empty,
+            }))).ConfigureAwait(false);
+            await Assert.ThrowsAsync<ApellidoNullException>(() => Task.FromResult(userService.UpdateUser(new UserRequestDto
+            {
+                UsuarioId = Guid.NewGuid(),
+                Nombre = "fake",
+                Apellido = null,
             }))).ConfigureAwait(false);
             await Assert.ThrowsAsync<CorreoNullException>(() => Task.FromResult(userService.UpdateUser(new UserRequestDto
             {
@@ -44,6 +55,13 @@ namespace Blazor.Test.Aplicacion.Core.Users.Registro
                 Apellido = "fake",
                 Correo = string.Empty,
             }))).ConfigureAwait(false);
+            await Assert.ThrowsAsync<CorreoNullException>(() => Task.FromResult(userService.UpdateUser(new UserRequestDto
+            {
+                UsuarioId = Guid.NewGuid(),
+                Nombre = "fake",
+                Apellido = "fake",
+                Correo = null,
+            }))).ConfigureAwait(false);
             await Assert.ThrowsAsync<ContrasenaNullException>(() => Task.FromResult(userService.UpdateUser(new UserRequestDto
             {
                 UsuarioId = Guid.NewGuid(),
@@ -51,6 +69,14 @@ namespace Blazor.Test.Aplicacion.Core.Users.Registro
                 Apellido = "fake",
                 Correo = "fake@fake.fake",
                 Contrasena = string.Empty,
+            }))).ConfigureAwait(false);
+            await Assert.ThrowsAsync<ContrasenaNullException>(() => Task.FromResult(userService.UpdateUser(new UserRequestDto
+            {
+                UsuarioId = Guid.NewGuid(),
+                Nombre = "fake",
+                Apellido = "fake",
+                Correo = "fake@fake.fake",
+                Contrasena = null,
             }))).ConfigureAwait(false);
             await Assert.ThrowsAsync<FechaRegistroNullException>(() => Task.FromResult(userService.UpdateUser(new UserRequestDto
             {
