@@ -1,9 +1,26 @@
 ﻿@page "/"
-
-<textarea @bind="texto" @bind:event="oninput"></textarea>
-<div>
-    @texto
+@inject NavigationManager NavigationManager
+<div class="card" style="align-content:center">
+    <textarea @bind="texto" @bind:event="oninput"></textarea>
+    <div class="col-12">
+        @texto
+    </div>
+    <div class="col-6">
+        <input type="button" value="Agregar usuario" @onclick="AddUser" />
+    </div>
+    <div class="col-6">
+        <input type="button" value="ver usuarios" @onclick="OpenUser" />
+    </div>
 </div>
+
 @code{
     private string texto = "";
+    protected void AddUser()
+    {
+        NavigationManager.NavigateTo("/useradd");
+    }
+    protected void OpenUser()
+    {
+        NavigationManager.NavigateTo("/userlist");
+    }
 }

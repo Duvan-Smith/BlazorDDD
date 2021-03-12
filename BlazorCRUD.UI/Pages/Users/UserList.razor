@@ -15,10 +15,11 @@ else
     <table class="table">
         <thead>
             <tr>
-                <td>Title</td>
-                <td>Director</td>
-                <td>Fecha</td>
-                <td>Fecha</td>
+                <td>Nombre</td>
+                <td>Apellido</td>
+                <td>Correo</td>
+                <td>Fecha Registro</td>
+                <td>Rol</td>
                 <td>  </td>
                 <td>  </td>
             </tr>
@@ -30,9 +31,28 @@ else
                     <td>@user.Nombre</td>
                     <td>@user.Apellido</td>
                     <td>@user.Correo</td>
-                    <td>@user.Rol</td>
-                    <td> <a href="/filmdetails/@user.UsuarioId"> <i> Edit </i> </a> </td>
-                    <td> <a href="/filmdelet/@user.UsuarioId"> <i> Delete </i> </a> </td>
+                    <td>@user.FechaRegistro</td>
+                    <td>
+                        <select name="select" disabled>
+                            @switch (user.Rol)
+                            {
+                                case 0:
+                                    <option selected>User</option>
+                                    break;
+                                case 2:
+                                    <option selected>Admin</option>
+                                    break;
+                                case 4:
+                                    <option selected>Op</option>
+                                    break;
+                                default:
+                                    <option>Selecionar</option>
+                                    break;
+                            }
+                        </select>
+                    </td>
+                    <td> <a href="/useradd/@user.UsuarioId"> <i> Edit </i> </a> </td>
+                    <td> <a href="/userdelet/@user.UsuarioId"> <i> Delete </i> </a> </td>
                 </tr>
             }
         </tbody>

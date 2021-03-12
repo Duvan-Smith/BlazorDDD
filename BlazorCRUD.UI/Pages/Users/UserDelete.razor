@@ -1,13 +1,12 @@
-﻿@page "/useradd"
-@page "/useradd/{Id}"
+﻿@page "/userdelet/{Id}"
 @using System;
 @using Blazor.Aplicacion.Dto.UsersDto.Registro
 @using Blazor.Aplicacion.Core.Users.FachadaUser
 @inject IFachadaUserService FachadaUserService
 @inject NavigationManager NavigationManager
-<h1>UserAdd</h1>
+<h1>FilmDelete</h1>
 
-
+<p style="color:darkred;text-align:center"> Are you sure </p>
 <EditForm Model="@userrequest">
     <table class="table">
         <tr>
@@ -39,46 +38,30 @@
         </tr>
         <tr>
             <td colspan="2" style="text-align:center">
-                <input type="submit" value="Save" @onclick="SaveUser" />
-                <input type="button" value="Cancel" @onclick="CancelUser" />
+                <input type="submit" value="Delete" @onclick="DeleteFilm" />
+                <input type="button" value="Cancel" @onclick="CancelFilm" />
             </td>
         </tr>
     </table>
 </EditForm>
-
-@code{
+@code {
     [Parameter]
     public string Id { get; set; }
 
     UserRequestDto userrequest = new UserRequestDto();
-    protected async Task SaveUser()
+
+    protected void CancelFilm()
     {
-        if (string.IsNullOrEmpty(Id))
-        {
-            userrequest.FechaRegistro = DateTimeOffset.Now;
-            await FachadaUserService.UserManagementInsert(userrequest).ConfigureAwait(true);
-        }
-        else
-        {
-            await FachadaUserService.UserManagementUpdate(userrequest).ConfigureAwait(true);
-        }
         NavigationManager.NavigateTo("/userlist");
     }
-    protected void CancelUser()
+    protected async Task DeleteFilm()
     {
+        await FachadaUserService.UserManagementDelete(userrequest).ConfigureAwait(true);
         NavigationManager.NavigateTo("/userlist");
     }
     protected override async Task OnInitializedAsync()
     {
-        if (string.IsNullOrEmpty(Id))
-        {
-            userrequest.FechaRegistro = DateTimeOffset.Now;
-        }
-        else
-        {
-            //TODO: Preguntar si en esta interfaz grafica tambien se pone true?
-            userrequest.UsuarioId = Guid.Parse(Id);
-            userrequest = await FachadaUserService.UserManagementGet(userrequest).ConfigureAwait(true);
-        }
+        userrequest.UsuarioId = Guid.Parse(Id);
+        userrequest = await FachadaUserService.UserManagementGet(userrequest).ConfigureAwait(true);
     }
 }
