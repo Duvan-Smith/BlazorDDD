@@ -2,7 +2,7 @@
 
 namespace Blazor.Aplicacion.Core.FilmServices.Excepciones
 {
-    public class UsernameNotDefinedException : SypException
+    public class UsernameNotDefinedException : BaseException
     {
     }
 }

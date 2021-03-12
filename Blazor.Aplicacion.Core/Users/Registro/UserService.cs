@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Blazor.Aplicacion.Core.FilmServices.Excepciones;
+using Blazor.Aplicacion.Core.Users.Registro.Excepciones;
 using Blazor.Aplicacion.Dto.UsersDto.Registro;
 using Blazor.Dominio.Users;
 using System;
@@ -21,6 +22,7 @@ namespace Blazor.Aplicacion.Core.Users.Registro
         }
         public bool UpdateUser(UserRequestDto request)
         {
+            CheckParameterUpdateUser(request);
             var entity = _repoUser.SearchMatchingOneResult<UserEntity>(x => x.UsuarioId == request.UsuarioId);
             entity.Nombre = request.Nombre;
             entity.Apellido = request.Apellido;
@@ -31,6 +33,40 @@ namespace Blazor.Aplicacion.Core.Users.Registro
 
             return _repoUser.Update(entity);
         }
+
+        private static void CheckParameterUpdateUser(UserRequestDto request)
+        {
+            if (request == null)
+            {
+                throw new UserRequestDtoNullException($"El parametro: {nameof(request)} es obligatorio");
+            }
+            if (request.UsuarioId == default || request?.UsuarioId == null)
+            {
+                throw new UsuarioIdNullException($"El parametro: {nameof(request.UsuarioId)} es obligatorio");
+            }
+
+            if (string.IsNullOrEmpty(request.Nombre))
+            {
+                throw new NombreNullException($"El parametro: {nameof(request.Nombre)} es obligatorio");
+            }
+            if (string.IsNullOrEmpty(request.Apellido))
+            {
+                throw new ApellidoNullException($"El parametro: {nameof(request.Apellido)} es obligatorio");
+            }
+            if (string.IsNullOrEmpty(request.Correo))
+            {
+                throw new CorreoNullException($"El parametro: {nameof(request.Correo)} es obligatorio");
+            }
+            if (string.IsNullOrEmpty(request.Contrasena))
+            {
+                throw new ContrasenaNullException($"El parametro: {nameof(request.Contrasena)} es obligatorio");
+            }
+            if (request.FechaRegistro == default || request?.FechaRegistro == null)
+            {
+                throw new FechaRegistroNullException($"El parametro: {nameof(request.FechaRegistro)} es obligatorio");
+            }
+        }
+
         public async Task<Guid?> InsertUser(UserRequestDto request)
         {
             var usernameExist = _repoUser

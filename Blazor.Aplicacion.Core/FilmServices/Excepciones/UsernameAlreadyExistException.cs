@@ -2,7 +2,7 @@
 
 namespace Blazor.Aplicacion.Core.FilmServices.Excepciones
 {
-    public class UsernameAlreadyExistException : SypException
+    public class UsernameAlreadyExistException : BaseException
     {
         public UsernameAlreadyExistException()
         {

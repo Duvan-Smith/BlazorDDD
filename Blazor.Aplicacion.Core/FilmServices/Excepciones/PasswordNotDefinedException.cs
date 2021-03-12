@@ -2,7 +2,7 @@
 
 namespace Blazor.Aplicacion.Core.FilmServices.Excepciones
 {
-    public class PasswordNotDefinedException : SypException
+    public class PasswordNotDefinedException : BaseException
     {
     }
 }

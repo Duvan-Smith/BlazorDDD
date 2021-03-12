@@ -2,7 +2,7 @@
 
 namespace Blazor.Aplicacion.Core.FilmServices.Excepciones
 {
-    public class RoleNotDefinedException : SypException
+    public class RoleNotDefinedException : BaseException
     {
     }
 }

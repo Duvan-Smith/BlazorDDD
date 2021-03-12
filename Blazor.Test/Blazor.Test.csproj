@@ -19,14 +19,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Aplicacion\Core\Users\FachadaUser\" />
+    <Folder Include="Aplicacion\Core\Users\InicioSesion\" />
     <Folder Include="Presentacion\" />
     <Folder Include="Servicios distribuidos\" />
-    <Folder Include="Aplicacion\Core\" />
-    <Folder Include="Aplicacion\Dto\" />
     <Folder Include="Dominio\" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Blazor.Aplicacion.Core\Blazor.Aplicacion.Core.csproj" />
+    <ProjectReference Include="..\Blazor.Aplicacion.Dto\Blazor.Aplicacion.Dto.csproj" />
     <ProjectReference Include="..\Blazor.Infraestructura.Datos.Persistencia\Blazor.Infraestructura.Datos.Persistencia.csproj" />
   </ItemGroup>
 
