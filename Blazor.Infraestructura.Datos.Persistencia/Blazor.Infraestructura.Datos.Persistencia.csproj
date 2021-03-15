@@ -34,4 +34,8 @@
     <ProjectReference Include="..\Blazor.Dominio\Blazor.Dominio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Operaciones\" />
+  </ItemGroup>
+
 </Project>

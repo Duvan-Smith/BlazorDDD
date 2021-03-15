@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Operaciones\" />
     <Folder Include="Users\Base\Excepciones\" />
   </ItemGroup>
 
