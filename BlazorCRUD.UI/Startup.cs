@@ -1,4 +1,5 @@
 using Blazor.Aplicacion.Core.FilmServices.Configuration;
+using Blazor.Aplicacion.Core.Operaciones.Base.Configuration;
 using Blazor.Aplicacion.Core.Users.Base.Configuration;
 using Blazor.Infraestructura.Datos.Persistencia.Base.Configuration;
 using Microsoft.AspNetCore.Builder;
@@ -28,6 +29,7 @@ namespace BlazorCRUD.UI
             var dbSettings = Configuration.GetSection("DbConnectionString").Get<string>();
             services.ConfigureFilmService(new DbSettings { ConnectionString = dbSettings });
             services.ConfigureFachadaUserService(new DbSettings { ConnectionString = dbSettings });
+            services.ConfigureOperacionesService(new DbSettings { ConnectionString = dbSettings });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

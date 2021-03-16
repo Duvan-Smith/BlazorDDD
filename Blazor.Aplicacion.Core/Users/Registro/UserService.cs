@@ -44,7 +44,6 @@ namespace Blazor.Aplicacion.Core.Users.Registro
             {
                 throw new UsuarioIdNullException($"El parametro: {nameof(request.UsuarioId)} es obligatorio");
             }
-
             if (string.IsNullOrEmpty(request.Nombre))
             {
                 throw new NombreNullException($"El parametro: {nameof(request.Nombre)} es obligatorio");
