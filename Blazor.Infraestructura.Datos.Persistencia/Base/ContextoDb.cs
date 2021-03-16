@@ -1,5 +1,6 @@
 ﻿using Blazor.Dominio.Base;
 using Blazor.Dominio.Films;
+using Blazor.Dominio.Operaciones.Division;
 using Blazor.Dominio.Operaciones.Multiplicacion;
 using Blazor.Dominio.Users;
 using Blazor.Infraestructura.Datos.Persistencia.Base.Configuration;
@@ -18,8 +19,8 @@ namespace Blazor.Infraestructura.Datos.Persistencia.Base
 
         public virtual DbSet<FilmEntity> Film { get; set; }
         public virtual DbSet<UserEntity> User { get; set; }
-
         public DbSet<MultiplicacionEntity> Multiplicacion { get; set; }
+        public DbSet<DivisionEntity> Division { get; set; }
 
         #endregion Tablas db
 

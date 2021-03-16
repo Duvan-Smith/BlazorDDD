@@ -1,4 +1,5 @@
 ﻿using Blazor.Dominio.Films;
+using Blazor.Dominio.Operaciones.Division;
 using Blazor.Dominio.Operaciones.Multiplicacion;
 using Blazor.Dominio.Users;
 using Capacitacion.Dominio.Core.Base;
@@ -11,7 +12,7 @@ namespace Blazor.Infraestructura.Datos.Persistencia.Base
     {
         DbSet<FilmEntity> Film { get; }
         DbSet<UserEntity> User { get; }
-
         DbSet<MultiplicacionEntity> Multiplicacion { get; }
+        DbSet<DivisionEntity> Division { get; }
     }
 }

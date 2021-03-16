@@ -1,7 +1,9 @@
 ﻿using Blazor.Dominio.Films;
+using Blazor.Dominio.Operaciones.Division;
 using Blazor.Dominio.Operaciones.Multiplicacion;
 using Blazor.Dominio.Users;
 using Blazor.Infraestructura.Datos.Persistencia.Films;
+using Blazor.Infraestructura.Datos.Persistencia.Operaciones.Division;
 using Blazor.Infraestructura.Datos.Persistencia.Operaciones.Multiplicacion;
 using Blazor.Infraestructura.Datos.Persistencia.Users;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,7 @@ namespace Blazor.Infraestructura.Datos.Persistencia.Base.Configuration
             services.TryAddTransient<IUserRepositorio, UserRepositorio>();
             services.TryAddTransient<IFilmRepositorio, FilmRepositorio>();
             services.TryAddTransient<IMultiplicacionRepositorio, MultiplicacionRepositorio>();
+            services.TryAddTransient<IDivisionRepository, DivisionRepository>();
 
             services.ConfigureContext(settings);
         }
