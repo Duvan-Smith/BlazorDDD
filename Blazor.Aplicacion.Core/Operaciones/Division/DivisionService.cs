@@ -23,8 +23,6 @@ namespace Blazor.Aplicacion.Core.Operaciones.Division
             var result = RequestDto.Dividendo / RequestDto.Divisor;
             RequestDto.Resultado = result;
             RequestDto.IdOperacion = Guid.NewGuid();
-            RequestDto.Dividendo = RequestDto.Dividendo;
-            RequestDto.Divisor = RequestDto.Divisor;
             var response = await divisionRepository.Insert(_mapper.Map<DivisionEntity>(RequestDto)).ConfigureAwait(false);
 
             return new DivisionResponseDto
