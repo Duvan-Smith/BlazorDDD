@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blazor.Infraestructura.Datos.Persistencia.Migrations
 {
     [DbContext(typeof(ContextoDb))]
-    [Migration("20210311222703_Add user")]
-    partial class Adduser
+    [Migration("20210316162009_Operacion migration guid")]
+    partial class Operacionmigrationguid
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,6 +44,52 @@ namespace Blazor.Infraestructura.Datos.Persistencia.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Film");
+                });
+
+            modelBuilder.Entity("Blazor.Dominio.Operaciones.Division.DivisionEntity", b =>
+                {
+                    b.Property<Guid>("IdOperacion")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit");
+
+                    b.Property<double>("Dividendo")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Divisor")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Resultado")
+                        .HasColumnType("float");
+
+                    b.HasKey("IdOperacion");
+
+                    b.ToTable("Division");
+                });
+
+            modelBuilder.Entity("Blazor.Dominio.Operaciones.Multiplicacion.MultiplicacionEntity", b =>
+                {
+                    b.Property<Guid>("IdOperacion")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Factor1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Factor2")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Resultado")
+                        .HasColumnType("float");
+
+                    b.HasKey("IdOperacion");
+
+                    b.ToTable("Multiplicacion");
                 });
 
             modelBuilder.Entity("Blazor.Dominio.Users.UserEntity", b =>

@@ -46,10 +46,9 @@ namespace Blazor.Infraestructura.Datos.Persistencia.Migrations
 
             modelBuilder.Entity("Blazor.Dominio.Operaciones.Division.DivisionEntity", b =>
                 {
-                    b.Property<int>("IdOperacion")
+                    b.Property<Guid>("IdOperacion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit");
@@ -70,10 +69,9 @@ namespace Blazor.Infraestructura.Datos.Persistencia.Migrations
 
             modelBuilder.Entity("Blazor.Dominio.Operaciones.Multiplicacion.MultiplicacionEntity", b =>
                 {
-                    b.Property<int>("IdOperacion")
+                    b.Property<Guid>("IdOperacion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit");
