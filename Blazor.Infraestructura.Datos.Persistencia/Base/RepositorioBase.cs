@@ -51,7 +51,9 @@ namespace Blazor.Infraestructura.Datos.Persistencia.Base
                 return false;
             }
         }
-
+        /// <summary>SearchMatching is a method in the RepositorioBase class.
+        /// <para>Is method is for search matching with the entity. <see cref="System.Console.WriteLine(System.String)"/> for information about output statements.</para>
+        /// </summary>
         public IEnumerable<T> SearchMatching<T>(Expression<Func<T, bool>> predicate) where T : EntidadBase =>
             _unitOfWork.Set<T>().Where(predicate);
 
