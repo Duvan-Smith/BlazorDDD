@@ -1,0 +1,56 @@
+﻿@page "/filmslisth"
+<h3>FilmListHttp</h3>
+@if (filmsrequest == null)
+{
+    <p> <em> Loading... </em> </p>
+}
+else if (filmsrequest.Count() == 0)
+{
+    <p> <em> No films </em> </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Title</td>
+                <td>Director</td>
+                <td>Fecha</td>
+                <td>  </td>
+                <td>  </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var film in filmsrequest)
+            {
+                <tr>
+                    <td>@film.Title</td>
+                    <td>@film.Director</td>
+                    <td>@film.ReleaseDate</td>
+                    <td> <a href="/filmdetails/@film.Id"> <i> Edit </i> </a> </td>
+                    <td> <a href="/filmdelet/@film.Id"> <i> Delete </i> </a> </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+}
+@code {
+    private IEnumerable<FilmRequestDto> filmsrequest;
+    private HttpGenericBaseClient httpGenericBaseClient;
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await UpFilms();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+    async Task UpFilms()
+    {
+        filmsrequest = await httpGenericBaseClient.Get<IEnumerable<FilmRequestDto>>("Film/GetAll", "").ConfigureAwait(true);
+    }
+}

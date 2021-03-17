@@ -32,15 +32,15 @@ Film Details
     public string Id { get; set; }
 
     FilmRequestDto filmrequest = new FilmRequestDto();
-    protected void SaveFilm()
+    protected async void SaveFilm()
     {
         if (string.IsNullOrEmpty(Id))
         {
-            FilmService.Agregar(filmrequest);
+            await FilmService.Agregar(filmrequest).ConfigureAwait(true);
         }
         else
         {
-            FilmService.ActualizarFilm(filmrequest);
+            await FilmService.ActualizarFilm(filmrequest).ConfigureAwait(true);
         }
         NavigationManager.NavigateTo("/filmlist");
     }
@@ -56,7 +56,7 @@ Film Details
         }
         else
         {
-            filmrequest = FilmService.GetFilmByFilm(Guid.Parse(Id));
+            filmrequest = await FilmService.GetFilmByFilm(Guid.Parse(Id)).ConfigureAwait(true);
         }
     }
 }

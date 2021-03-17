@@ -42,7 +42,7 @@
         {
             try
             {
-                filmsrequest = FilmService.GetAllFilm();
+                filmsrequest = await FilmService.GetAllFilm().ConfigureAwait(true);
             }
             catch (Exception)
             {

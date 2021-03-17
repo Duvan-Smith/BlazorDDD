@@ -41,36 +41,36 @@ namespace Blazor.Aplicacion.Core.FilmServices
                 throw new UsernameNotDefinedException();
         }
 
-        public FilmRequestDto GetFilmByFilm(Guid request)
+        public Task<FilmRequestDto> GetFilmByFilm(Guid request)
         {
             var user = _repoFilm
                 .SearchMatching<FilmEntity>(x => x.Id == request);
 
-            return _mapper.Map<FilmRequestDto>(user.FirstOrDefault());
+            return Task.FromResult(_mapper.Map<FilmRequestDto>(user.FirstOrDefault()));
         }
 
-        public bool ActualizarFilm(FilmRequestDto film)
+        public Task<bool> ActualizarFilm(FilmRequestDto film)
         {
             var entity = _repoFilm.SearchMatchingOneResult<FilmEntity>(x => x.Id == film.Id);
             entity.Title = film.Title;
             entity.Director = film.Director;
             entity.ReleaseDate = film.ReleaseDate;
 
-            return _repoFilm.Update(entity);
+            return Task.FromResult(_repoFilm.Update(entity));
         }
 
-        public bool Eliminar(FilmRequestDto request)
+        public Task<bool> Eliminar(FilmRequestDto request)
         {
             var entity = _mapper.Map<FilmEntity>(request);
-            return _repoFilm.Delete(entity);
+            return Task.FromResult(_repoFilm.Delete(entity));
         }
 
-        public IEnumerable<FilmRequestDto> GetAllFilm()
+        public Task<IEnumerable<FilmRequestDto>> GetAllFilm()
         {
             var user = _repoFilm
                 .GetAll<FilmEntity>();
 
-            return _mapper.Map<IEnumerable<FilmRequestDto>>(user);
+            return Task.FromResult(_mapper.Map<IEnumerable<FilmRequestDto>>(user));
         }
     }
 }

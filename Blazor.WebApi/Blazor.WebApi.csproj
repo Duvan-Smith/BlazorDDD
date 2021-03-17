@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Films\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -17,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Blazor.Aplicacion.Core\Blazor.Aplicacion.Core.csproj" />
+    <ProjectReference Include="..\Blazor.Infraestructura.Transversal\Blazor.Infraestructura.Transversal.csproj" />
   </ItemGroup>
 
 </Project>

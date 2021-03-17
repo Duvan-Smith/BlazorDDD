@@ -34,13 +34,13 @@
     {
         NavigationManager.NavigateTo("/filmlist");
     }
-    protected void DeleteFilm()
+    protected async void DeleteFilm()
     {
-        FilmService.Eliminar(filmrequest);
+        await FilmService.Eliminar(filmrequest).ConfigureAwait(true);
         NavigationManager.NavigateTo("/filmlist");
     }
     protected override async Task OnInitializedAsync()
     {
-        filmrequest = FilmService.GetFilmByFilm(Guid.Parse(Id));
+        filmrequest = await FilmService.GetFilmByFilm(Guid.Parse(Id)).ConfigureAwait(true);
     }
 }
