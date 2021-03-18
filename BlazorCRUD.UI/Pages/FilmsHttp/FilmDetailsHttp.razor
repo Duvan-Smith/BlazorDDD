@@ -55,11 +55,11 @@ Film Details
     {
         if (string.IsNullOrEmpty(Id))
         {
-            filmrequest.ReleaseDate = DateTimeOffset.Now;
+            //filmrequest.ReleaseDate = DateTimeOffset.Now;
         }
         else
         {
-            filmrequest = await FilmService.GetFilmByFilm(Guid.Parse(Id)).ConfigureAwait(true);
+            //filmrequest = await FilmService.GetFilmByFilm(Guid.Parse(Id)).ConfigureAwait(true);
         }
     }
 }

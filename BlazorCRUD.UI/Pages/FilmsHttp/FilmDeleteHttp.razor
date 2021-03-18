@@ -1,0 +1,47 @@
+﻿@page "/filmdeletht/{id}"
+<h1>FilmDelete</h1>
+
+<p style="color:darkred;text-align:center"> Are you sure </p>
+<EditForm Model="@filmrequest">
+    <table class="table">
+        <tr>
+            <td>Title:</td>
+            <td> <input type="text" @bind="filmrequest.Title" /> </td>
+        </tr>
+        <tr>
+            <td>Director:</td>
+            <td> <input type="text" @bind="filmrequest.Director" /> </td>
+        </tr>
+        <tr>
+            <td>Fecha:</td>
+            <td> <input type="text" @bind="filmrequest.ReleaseDate" /> </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center">
+                <input type="submit" value="Delete" @onclick="DeleteFilm" />
+                <input type="button" value="Cancel" @onclick="CancelFilm" />
+            </td>
+        </tr>
+    </table>
+</EditForm>
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    FilmRequestDto filmrequest = new FilmRequestDto();
+
+    protected void CancelFilm()
+    {
+        NavigationManager.NavigateTo("/filmslisth");
+    }
+    protected async void DeleteFilm()
+    {
+        //await FilmService.Eliminar(filmrequest).ConfigureAwait(true);
+        NavigationManager.NavigateTo("/filmslisth");
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        //filmrequest = await FilmService.GetFilmByFilm(Guid.Parse(Id)).ConfigureAwait(true);
+    }
+}
+

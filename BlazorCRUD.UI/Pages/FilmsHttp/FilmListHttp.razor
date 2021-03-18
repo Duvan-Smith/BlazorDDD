@@ -27,8 +27,8 @@ else
                     <td>@film.Title</td>
                     <td>@film.Director</td>
                     <td>@film.ReleaseDate</td>
-                    <td> <a href="/filmdetails/@film.Id"> <i> Edit </i> </a> </td>
-                    <td> <a href="/filmdelet/@film.Id"> <i> Delete </i> </a> </td>
+                    <td> <a href="/filmdetailsht/@film.Id"> <i> Edit </i> </a> </td>
+                    <td> <a href="/filmdeletht/@film.Id"> <i> Delete </i> </a> </td>
                 </tr>
             }
         </tbody>
@@ -42,7 +42,7 @@ else
     {
         try
         {
-            await UpFilms();
+            await UpFilms().ConfigureAwait(true);
         }
         catch (Exception)
         {
@@ -51,6 +51,6 @@ else
     }
     async Task UpFilms()
     {
-        filmsrequest = await HttpGenericBaseClient.Get<IEnumerable<FilmRequestDto>>("Film/GetAll", "").ConfigureAwait(true);
+        filmsrequest = await HttpGenericBaseClient.Get<IEnumerable<FilmRequestDto>>("Film/GetAll","").ConfigureAwait(true);
     }
 }
