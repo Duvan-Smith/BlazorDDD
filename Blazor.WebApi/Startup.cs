@@ -42,7 +42,7 @@ namespace Blazor.WebApi
             {
                 Context = string.Empty,
                 Hostname = "localhost",
-                Port = 5000,
+                Port = 44309,
                 ServiceProtocol = "http"
             });
         }
