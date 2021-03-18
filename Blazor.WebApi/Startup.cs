@@ -34,17 +34,24 @@ namespace Blazor.WebApi
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddControllers();
-            var dbSettings = Configuration.GetSection("DbConnectionString").Get<string>();
+            var dbSettings = Configuration.GetSection("ConnectionString").Get<string>();
+            var ClientSettings = Configuration.GetSection("ClientSettings").Get<HttpClientSettings>();
             services.ConfigureFilmService(new DbSettings { ConnectionString = dbSettings });
             services.ConfigureFachadaUserService(new DbSettings { ConnectionString = dbSettings });
             services.ConfigureOperacionesService(new DbSettings { ConnectionString = dbSettings });
             services.ConfigureHttpClientService(new HttpClientSettings
             {
-                Context = string.Empty,
-                Hostname = "localhost",
-                Port = 44309,
-                ServiceProtocol = "http"
+                Context = ClientSettings.Context,
+                Hostname = ClientSettings.Hostname,
+                Port = ClientSettings.Port,
+                ServiceProtocol = ClientSettings.ServiceProtocol
             });
+            //{
+            //    Context = string.Empty,
+            //    Hostname = "localhost",
+            //    Port = 44309,
+            //    ServiceProtocol = "http"
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

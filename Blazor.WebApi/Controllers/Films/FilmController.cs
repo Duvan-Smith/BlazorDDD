@@ -2,6 +2,7 @@
 using Blazor.Aplicacion.Dto.FilmsDto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -21,5 +22,9 @@ namespace Blazor.WebApi.Controllers.Films
         [HttpGet(nameof(GetAll))]
         public async Task<IEnumerable<FilmRequestDto>> GetAll() =>
             await _filmService.GetAllFilm().ConfigureAwait(false);
+
+        [HttpPost(nameof(InsertFilm))]
+        public async Task<Guid?> InsertFilm(FilmRequestDto requestDto) =>
+            await _filmService.Agregar(requestDto).ConfigureAwait(false);
     }
 }

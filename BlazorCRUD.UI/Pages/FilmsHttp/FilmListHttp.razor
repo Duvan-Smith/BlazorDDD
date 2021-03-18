@@ -37,7 +37,7 @@ else
 }
 @code {
     private IEnumerable<FilmRequestDto> filmsrequest;
-    private HttpGenericBaseClient httpGenericBaseClient;
+    //private HttpGenericBaseClient httpGenericBaseClient;
     protected override async Task OnInitializedAsync()
     {
         try
@@ -51,6 +51,6 @@ else
     }
     async Task UpFilms()
     {
-        filmsrequest = await httpGenericBaseClient.Get<IEnumerable<FilmRequestDto>>("Film/GetAll", "").ConfigureAwait(true);
+        filmsrequest = await HttpGenericBaseClient.Get<IEnumerable<FilmRequestDto>>("Film/GetAll", "").ConfigureAwait(true);
     }
 }
