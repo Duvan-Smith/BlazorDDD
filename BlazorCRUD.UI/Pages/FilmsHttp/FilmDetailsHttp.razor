@@ -1,5 +1,6 @@
 ﻿@page "/filmdetailsht"
 @page "/filmdetailsht/{Id}"
+@inject HttpClient Http
 <h1>FilmDetails</h1>
 
 Film Details
@@ -38,12 +39,12 @@ Film Details
     {
         if (string.IsNullOrEmpty(Id))
         {
-            await HttpGenericBaseClient.Post<FilmRequestDto, FilmRequestDto>("Film/InsertFilm", filmrequest).ConfigureAwait(true);
+            //await HttpGenericBaseClient.Post<FilmRequestDto, FilmRequestDto>("Film/InsertFilm", filmrequest).ConfigureAwait(true);
             //await FilmService.Agregar(filmrequest).ConfigureAwait(true);
         }
         else
         {
-            await FilmService.ActualizarFilm(filmrequest).ConfigureAwait(true);
+            //await FilmService.ActualizarFilm(filmrequest).ConfigureAwait(true);
         }
         NavigationManager.NavigateTo("/filmlist");
     }

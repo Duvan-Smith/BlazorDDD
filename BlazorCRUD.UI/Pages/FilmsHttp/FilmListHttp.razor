@@ -1,4 +1,5 @@
 ﻿@page "/filmslisth"
+@inject HttpClient Http
 <h3>FilmListHttp</h3>
 @if (filmsrequest == null)
 {
@@ -37,6 +38,7 @@ else
 }
 @code {
     private IEnumerable<FilmRequestDto> filmsrequest;
+    private FilmRequestDto[] filmsrequestL;
     //private HttpGenericBaseClient httpGenericBaseClient;
     protected override async Task OnInitializedAsync()
     {
@@ -51,6 +53,8 @@ else
     }
     async Task UpFilms()
     {
-        filmsrequest = await HttpGenericBaseClient.Get<IEnumerable<FilmRequestDto>>("Film/GetAll","").ConfigureAwait(true);
+        filmsrequest = await HttpGenericBaseClient.Get<IEnumerable<FilmRequestDto>>("Film/GetAll", "").ConfigureAwait(true);
+        //filmsrequest = await Http.GetFromJsonAsync<IEnumerable<FilmRequestDto>>("Film/GetAll");
+        //filmsrequestL = await Http.GetFromJsonAsync<FilmRequestDto[]>("Film/GetAll");
     }
 }

@@ -2,7 +2,6 @@ using Blazor.Aplicacion.Core.FilmServices.Configuration;
 using Blazor.Aplicacion.Core.Operaciones.Base.Configuration;
 using Blazor.Aplicacion.Core.Users.Base.Configuration;
 using Blazor.Infraestructura.Datos.Persistencia.Base.Configuration;
-using Blazor.Infraestructura.Transversal.GenericMethods.Cofiguration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -14,17 +13,9 @@ namespace Blazor.WebApi
     public class Startup
     {
         public IConfiguration Configuration { get; }
-        public IHostEnvironment Environment { get; }
-        public Startup(IHostEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            Environment = env;
-            var configurationBuilder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", false, true)
-                .AddJsonFile($"appsettings{env.EnvironmentName}.json", true, true)
-                .AddEnvironmentVariables();
-            //.EnableSubstitutions();
-            Configuration = configurationBuilder.Build();
+            Configuration = configuration;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -35,17 +26,17 @@ namespace Blazor.WebApi
             services.AddServerSideBlazor();
             services.AddControllers();
             var dbSettings = Configuration.GetSection("ConnectionString").Get<string>();
-            var ClientSettings = Configuration.GetSection("ClientSettings").Get<HttpClientSettings>();
+            //var ClientSettings = Configuration.GetSection("ClientSettings").Get<HttpClientSettings>();
             services.ConfigureFilmService(new DbSettings { ConnectionString = dbSettings });
             services.ConfigureFachadaUserService(new DbSettings { ConnectionString = dbSettings });
             services.ConfigureOperacionesService(new DbSettings { ConnectionString = dbSettings });
-            services.ConfigureHttpClientService(new HttpClientSettings
-            {
-                Context = ClientSettings.Context,
-                Hostname = ClientSettings.Hostname,
-                Port = ClientSettings.Port,
-                ServiceProtocol = ClientSettings.ServiceProtocol
-            });
+            //services.ConfigureHttpClientService(new HttpClientSettings
+            //{
+            //    Context = ClientSettings.Context,
+            //    Hostname = ClientSettings.Hostname,
+            //    Port = ClientSettings.Port,
+            //    ServiceProtocol = ClientSettings.ServiceProtocol
+            //});
             //{
             //    Context = string.Empty,
             //    Hostname = "localhost",

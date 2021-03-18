@@ -13,12 +13,24 @@ namespace BlazorCRUD.UI
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public IConfiguration Configuration { get; }
+        //public Startup(IConfiguration configuration)
+        //{
+        //    Configuration = configuration;
+        //}
+        public IHostEnvironment Environment { get; }
+        public Startup(IHostEnvironment env)
         {
-            Configuration = configuration;
+            Environment = env;
+            var configurationBuilder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", false, true)
+                .AddJsonFile($"appsettings{env.EnvironmentName}.json", true, true)
+                .AddEnvironmentVariables();
+            //.EnableSubstitutions();
+            Configuration = configurationBuilder.Build();
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
