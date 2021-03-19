@@ -1,5 +1,6 @@
 ﻿@page "/filmslisth"
 @inject HttpClient Http
+@inject IJSRuntime JsRuntime
 <h3>FilmListHttp</h3>
 @if (filmsrequest == null)
 {
@@ -48,6 +49,7 @@ else
         }
         catch (Exception)
         {
+            bool confirmed = await JsRuntime.InvokeAsync<bool>("confirm", "Are you sure?");
             throw;
         }
     }
